@@ -15,6 +15,7 @@ gem "omniauth-google-oauth2"
 gem 'spring',        group: :development
 gem "codeclimate-test-reporter", group: :test, require: nil
 
+gem "unicorn"
 gem "unicorn-rails"
 
 group :development do
