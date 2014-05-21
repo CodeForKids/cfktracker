@@ -1,6 +1,5 @@
 <% unless current_user %>
-  Not authenticated
-  <%= link_to 'Sign In With Google', "/auth/google_oauth2", class: "btn btn-primary" %>
+  <%= render 'layouts/login' %>
 <% else %>
   <div class="panel panel-default page-panel">
     <div class="panel-header"><h2>People using this app</h2></div>

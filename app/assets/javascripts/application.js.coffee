@@ -9,3 +9,10 @@
 $(document).on "ready page:change", ->
   $('.navbar-nav > li > a').tooltip()
   $('.addtooltip').tooltip()
+  resize()
+
+$(window).resize ->
+  resize()
+
+resize = () ->
+  $('.v-center').css('height',$(window).height())
