@@ -1,0 +1,6 @@
+development: &default_settings
+  SECRET_BASE_KEY: <%= ENV['SECRET_KEY_BASE'] %>
+  GOOGLE_KEY: <%= ENV['GOOGLE_KEY'] %>
+  GOOGLE_SECRET: <%= ENV['GOOGLE_SECRET'] %>
+test:
+  <<: *default_settings
