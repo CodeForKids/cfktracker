@@ -1,0 +1,19 @@
+<div class="panel panel-default page-panel">
+  <div class="panel-header">
+    <h1>Hi there, <%= current_user.name %></h1>
+    <p><b>Total Received:</b> <%= Timetracker.received(current_user) %> hours</p>
+    <p><b>Total Unreceived:</b> <%= Timetracker.unreceived(current_user) %> hours</p>
+    <div class="actions">
+      <%= link_to receive_all_times_path(current_user), method: :put, data: { confirm: 'Are you sure you want to mark all times as received?' }, "data-toggle" => "tooltip", "data-placement" => "bottom", "title" => "Mark all times as received", class: 'addtooltip pull-right' do %>
+        <i class="glyphicon glyphicon-thumbs-up"></i>
+      <% end %>
+      <%= link_to new_timetracker_path, "data-toggle" => "tooltip", "data-placement" => "bottom", "title" => "Add a Time", class: 'addtooltip pull-right' do %>
+        <i class="glyphicon glyphicon-plus"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <ul class="list-group">
+    <%= render @timetrackers %>
+  </ul>
+</div>

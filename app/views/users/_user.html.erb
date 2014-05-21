@@ -1,0 +1,21 @@
+<% if user == current_user %>
+  <% url = timetrackers_path %>
+<% else %>
+  <% url = user_times_path(user) %>
+<% end %>
+
+<%= link_to url,"data-toggle" => "tooltip", "data-placement" => "auto", "title" => "View #{ user.name}'s times", class: 'addtooltip' do %>
+  <li class="list-group-item big-list-item clearfix">
+      <div class="user">
+        <h2>
+          <%= image_tag gravatar(user.email) %> <%= user.name %> &nbsp;
+        </h2>
+      </div>
+      <div class="info">
+        <h3>
+        <small>Total Received Hours: <%= user.total_received_hours %> hours</small><br>
+        <small>Total Unreceived Hours: <%= user.total_unreceived_hours %> hours</small>
+        </h3>
+      </div>
+  </li>
+<% end %>

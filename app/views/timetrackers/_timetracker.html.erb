@@ -1,0 +1,22 @@
+<li class="list-group-item big-list-item">
+    <h2 class="status">
+      <%= timetracker.date.strftime("%B %d, %Y") %> &nbsp;<small><%= timetracker.time %> hours
+
+      <% if !defined?(@user) %>
+        <%= link_to timetracker_path(timetracker), method: :delete, data: { confirm: 'Are you sure you want to delete this time?' }, "data-toggle" => "tooltip", "data-placement" => "bottom", "title" => "Delete this Time", class: 'addtooltip' do %>
+          <i class="glyphicon glyphicon-remove"></i>
+        <% end %>
+
+        <%= link_to edit_timetracker_path(timetracker), "data-toggle" => "tooltip", "data-placement" => "bottom", "title" => "Edit this time", class: 'addtooltip' do %>
+          <i class="glyphicon glyphicon-pencil"></i>
+        <% end %>
+      <% end %>
+
+        <%= link_to timetracker_toggle_path(timetracker), method: :put, "data-toggle" => "tooltip", "data-placement" => "bottom", "title" => "Mark as #{timetracker.received_for_toggle_as_words}", class: 'addtooltip' do %>
+          <i class="glyphicon glyphicon-<%= timetracker.class_for_toggle %>"></i>
+        <% end %>
+
+      </small>
+    </h2>
+    <p><%= timetracker.description %></p>
+</li>

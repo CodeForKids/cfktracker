@@ -1,0 +1,31 @@
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container">
+    <div>
+      <a class="navbar-brand" href="/"><%= image_tag 'logo.png', height: '40px' %></a>
+    </div>
+
+    <% if current_user %>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+
+      <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-text" data-toggle="tooltip" data-placement="bottom" title="View all users" href="/"><i class="glyphicon glyphicon glyphicon-th-list"></i></a></li>
+          <li><a class="navbar-text" data-toggle="tooltip" data-placement="bottom" title="View your times" href="/timetrackers"><i class="glyphicon glyphicon glyphicon-time"></i></a></li>
+          <li><a class="navbar-text" data-toggle="tooltip" data-placement="bottom" title="Sign Out" href="/sign-out"><i class="glyphicon glyphicon glyphicon-log-out"></i></a></li>
+          <li>
+            <span class="navbar-text">Signed in as <%=current_user.name%></span>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+
+  </div>
+</nav>

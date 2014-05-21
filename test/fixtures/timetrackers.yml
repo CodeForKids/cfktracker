@@ -1,0 +1,13 @@
+one:
+  date: '<%= Date.new(2014, 8, 29) %>'
+  time: 3
+  user: julian
+  received: false
+  description: test
+
+two:
+  date: '<%= Date.new(2014, 8, 29) %>'
+  time: 3
+  user: lucas
+  received: false
+  description: test

@@ -1,0 +1,37 @@
+<%= form_for(@timetracker) do |f| %>
+  <% if @timetracker.errors.any? %>
+    <div id="error_explanation" class="panel panel-danger">
+      <h2><%= pluralize(@timetracker.errors.count, "error") %> prohibited this timetracker from being saved:</h2>
+
+      <ul>
+      <% @timetracker.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+
+    <%= f.label :date %>
+    <div class="input-group">
+      <%= f.text_field :date, type: 'date', class: 'form-control' %>
+      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    </div>
+
+    <%= f.label :time %>
+    <div class="input-group">
+      <%= f.text_field :time, type: 'number', class: 'form-control' %>
+      <span class="input-group-addon">hours</span>
+    </div>
+
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control', rows: "3" %>
+  </div>
+
+  <br>
+
+  <div>
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
