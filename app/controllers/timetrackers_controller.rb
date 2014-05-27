@@ -14,12 +14,10 @@ class TimetrackersController < ApplicationController
     @timetracker.received = !@timetracker.received
 
     if @timetracker.save
-      flash[:notice] = 'Successfully toggled received on Timetracker'
+      redirect(@timetracker.user, 'Successfully toggled received on Timetracker')
     else
-      flash[:error] = 'Could not toggle received on Timetracker'
+      redirect(@timetracker.user, 'Could not toggle received on Timetracker', true)
     end
-
-    redirect(@timetracker.user, 'Successfully toggled received on Timetracker')
   end
 
   def receive_all
@@ -29,15 +27,14 @@ class TimetrackersController < ApplicationController
     success = true
     @timetrackers.each do |time|
       time.received = true
-      success = success and time.save
-    end
-    if success
-      notice = 'Successfully received all times'
-    else
-      notice = 'Receiving one or more times failed'
+      success = time.save and success
     end
 
-    redirect(@user, notice)
+    if success
+      redirect(@user, 'Successfully received all times')
+    else
+      redirect(@user, 'Receiving one or more times failed', true)
+    end
   end
 
   def new
@@ -54,6 +51,7 @@ class TimetrackersController < ApplicationController
     if @timetracker.save
       redirect_to timetrackers_path, notice: 'Timetracker was successfully created.'
     else
+      flash[:error] = @timetracker.errors
       render action: 'new'
     end
   end
@@ -73,19 +71,26 @@ class TimetrackersController < ApplicationController
   end
 
   private
-    def set_timetracker
-      @timetracker = Timetracker.find(params[:timetracker_id] || params[:id])
+
+  def set_timetracker
+    @timetracker = Timetracker.find(params[:timetracker_id] || params[:id])
+  end
+
+  def timetracker_params
+    params.require(:timetracker).permit(:id, :date, :time, :user, :received, :description)
+  end
+
+  def redirect(user, notice, error=false)
+    if error
+      flash[:error] = notice
+    else
+      flash[:notice] = notice
     end
 
-    def timetracker_params
-      params.require(:timetracker).permit(:id, :date, :time, :user, :received, :description)
+    if user == current_user
+      redirect_to timetrackers_path
+    else
+      redirect_to user_times_path(user)
     end
-
-    def redirect(user, notice)
-      if user == current_user
-        redirect_to timetrackers_path, notice: notice
-      else
-        redirect_to user_times_path(user), notice: notice
-      end
-    end
+  end
 end

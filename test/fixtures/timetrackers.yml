@@ -11,3 +11,10 @@ two:
   user: lucas
   received: false
   description: test
+
+three:
+  date: '<%= Date.new(2014, 8, 29) %>'
+  time: 3
+  user: julian
+  received: true
+  description: test

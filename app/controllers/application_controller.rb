@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   before_action :authenticate, except: :root
 
   def root
-    puts CONFIG['GOOGLE_SECRET']
     if current_user
       @users = User.all
     end
