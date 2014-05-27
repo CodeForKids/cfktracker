@@ -3,6 +3,8 @@ class Timetracker < ActiveRecord::Base
   validates :date, :description, presence: true
   validates :time, numericality: { less_than_or_equal_to: 24 }
 
+  default_scope { order('date DESC') }
+
   def self.received(current_user)
     where(user: current_user, received: true).map(&:time).inject(0, &:+)
   end
