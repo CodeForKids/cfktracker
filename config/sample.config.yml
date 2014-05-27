@@ -1,0 +1,6 @@
+development: &default_settings
+  SECRET_BASE_KEY: 12345
+  GOOGLE_KEY: 12345
+  GOOGLE_SECRET: 12345
+test:
+  <<: *default_settings
