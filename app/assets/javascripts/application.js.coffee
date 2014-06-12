@@ -16,3 +16,12 @@ $(window).resize ->
 
 resize = () ->
   $('.v-center').css('height',$(window).height())
+
+Date::toDateInputValue = (->
+  local = new Date(this)
+  local.setMinutes @getMinutes() - @getTimezoneOffset()
+  local.toJSON().slice 0, 10
+)
+
+$(document).ready ->
+  $('.datepicker').val new Date().toDateInputValue()
