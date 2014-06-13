@@ -9,6 +9,7 @@
 $(document).on "ready page:change", ->
   $('.navbar-nav > li > a').tooltip()
   $('.addtooltip').tooltip()
+  $('.datepicker').val new Date().toDateInputValue()
   resize()
 
 $(window).resize ->
@@ -22,6 +23,3 @@ Date::toDateInputValue = (->
   local.setMinutes @getMinutes() - @getTimezoneOffset()
   local.toJSON().slice 0, 10
 )
-
-$(document).ready ->
-  $('.datepicker').val new Date().toDateInputValue()
