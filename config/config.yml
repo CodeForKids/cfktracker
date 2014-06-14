@@ -1,0 +1,6 @@
+production: &default_settings
+  SECRET_BASE_KEY: ENV['SECRET_TOKEN']
+  GOOGLE_KEY: ENV['GOOGLE_KEY']
+  GOOGLE_SECRET: ENV['GOOGLE_SECRET']
+test:
+  <<: *default_settings
