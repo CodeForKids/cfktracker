@@ -18,11 +18,3 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 gem "unicorn"
 gem "unicorn-rails"
 
-group :development do
-  gem 'capistrano3-unicorn'
-  gem 'capistrano', '~> 3.1.0'
-  gem 'capistrano-bundler', '~> 1.1.2'
-  gem 'capistrano-rails', '~> 1.1.1'
-  gem 'capistrano-rvm'
-end
-
