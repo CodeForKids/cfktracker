@@ -2,7 +2,7 @@ Code For Kids Time Tracker
 =========
 [![Code Climate](https://codeclimate.com/repos/537c0e56695680148f005bb5/badges/54d9dfdbaf94b9e84c80/gpa.png)](https://codeclimate.com/repos/537c0e56695680148f005bb5/feed) [![Code Climate](https://codeclimate.com/repos/537c0e56695680148f005bb5/badges/54d9dfdbaf94b9e84c80/coverage.png)](https://codeclimate.com/repos/537c0e56695680148f005bb5/feed)
 
-A way to transparently show what we spend our time on.
+A way to transparently show (internally) what we spend our time on.
 
 #### Setup
 
