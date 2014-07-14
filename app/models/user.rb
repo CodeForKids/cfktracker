@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   end
 
   def format_time(number)
-    number = number[2, number.length] if number.to_i > 52
+    number = Date::MONTHNAMES[number[2, number.length].to_i] if number.to_i > 52
     number
   end
 
