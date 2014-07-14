@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
     times = timetrackers.group_by(&period).sort_by {|key, value| key}
     times.collect do |n, v|
       trackers << v.inject(0) {|n, timetracker| n + timetracker.time }
-      time_periods << n
+      time_periods << format_time(n)
     end
     fill_in_values(time_periods, trackers) if time_periods.size > 0
     { time_periods: time_periods, trackers: trackers }
@@ -60,6 +60,11 @@ class User < ActiveRecord::Base
         trackers.insert(index, 0)
       end
     end
+  end
+
+  def format_time(number)
+    number[2, number.length] if number.to_i > 52
+    number
   end
 
 end
