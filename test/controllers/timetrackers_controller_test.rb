@@ -10,7 +10,6 @@ class TimetrackersControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:timetrackers)
-    assert_equal 2, assigns(:timetrackers).length
   end
 
   test 'should get user times' do
@@ -58,7 +57,6 @@ class TimetrackersControllerTest < ActionController::TestCase
       post :create, timetracker: { date: '05-05-14', time: 3, user_id: @user, description: 'test' }
     end
 
-    assert_equal 3, Timetracker.where(user: @user).length
     assert_redirected_to timetrackers_path
     assert_equal 'Timetracker was successfully created.', flash[:notice]
   end

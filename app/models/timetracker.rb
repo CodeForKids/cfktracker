@@ -29,4 +29,12 @@ class Timetracker < ActiveRecord::Base
     end
   end
 
+  def week
+    self.date.strftime("%W")
+  end
+
+  def month
+    self.date.strftime("%y%m")
+  end
+
 end

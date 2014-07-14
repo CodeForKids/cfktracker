@@ -13,4 +13,12 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 3, @julian.total_received_hours
   end
 
+  test 'weekly_average' do
+    assert_equal 4.5, @julian.weekly_average
+  end
+
+  test 'monthly_average' do
+    assert_equal 4.5, @julian.monthly_average
+  end
+
 end

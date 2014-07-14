@@ -18,4 +18,17 @@ class User < ActiveRecord::Base
     Timetracker.where(user: self, received: false).map(&:time).inject(0, &:+)
   end
 
+  def weekly_average
+    average(:week)
+  end
+
+  def monthly_average
+    average(:month)
+  end
+
+  def average(period)
+    weekly = timetrackers.group_by(&period).collect { |n, v| v.inject(0) {|n, timetracker| n + timetracker.time } }
+    weekly.instance_eval { reduce(:+) / size.to_f }
+  end
+
 end
