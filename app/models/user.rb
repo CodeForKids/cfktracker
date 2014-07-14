@@ -27,8 +27,13 @@ class User < ActiveRecord::Base
   end
 
   def average(period)
-    weekly = timetrackers.group_by(&period).collect { |n, v| v.inject(0) {|n, timetracker| n + timetracker.time } }
-    weekly.instance_eval { reduce(:+) / size.to_f }
+    times = timetrackers.group_by(&period).collect { |n, v| v.inject(0) {|n, timetracker| n + timetracker.time } }
+    Rails.logger.info "TIMES: #{times.inspect}"
+    if times.length > 0
+      times.instance_eval { reduce(:+) / size.to_f }
+    else
+      0
+    end
   end
 
 end
