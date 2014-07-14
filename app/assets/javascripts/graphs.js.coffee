@@ -12,10 +12,8 @@ $(document).on "ready page:load", ->
     y = d3.scale.linear().domain([0, $(this).data('max')]).range([h, 0])
 
     line = d3.svg.line().x((d, i) ->
-      console.log "Plotting X value for data point: " + d + " using index: " + i + " to be at: " + x(i) + " using our xScale."
       x i
     ).y((d) ->
-      console.log "Plotting Y value for data point: " + d + " to be at: " + y(d) + " using our yScale."
       y d
     )
 
@@ -25,3 +23,10 @@ $(document).on "ready page:load", ->
     yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left")
     graph.append("svg:g").attr("class", "y axis").attr("transform", "translate(-25,0)").call yAxisLeft
     graph.append("svg:path").attr "d", line(data)
+
+    #Axis Labels
+    graph.append("text").attr("text-anchor", "middle").attr("transform", "translate(-60," + (h/2) + ")rotate(-90)").text("Hours")
+    graph.append("text")
+            .attr("text-anchor", "middle")
+            .attr("transform", "translate("+ (w/2) + "," + (h+40) + ")")
+            .text($(this).data('x-axis'));
