@@ -27,12 +27,40 @@ class User < ActiveRecord::Base
   end
 
   def average(period)
-    times = timetrackers.group_by(&period).collect { |n, v| v.inject(0) {|n, timetracker| n + timetracker.time } }
-    Rails.logger.info "TIMES: #{times.inspect}"
+    times = trackers_by_period(period)[:trackers]
     if times.length > 0
-      times.instance_eval { reduce(:+) / size.to_f }
+      times.instance_eval { reduce(:+) / size.to_f }.round(2)
     else
       0
+    end
+  end
+
+  def trackers_as_json(period)
+    trackers_by_period(period).to_json
+  end
+
+  def trackers_by_period(period)
+    trackers = []
+    weeks = []
+    times = timetrackers.group_by(&period)
+    puts "Times #{times}"
+    times = times.sort_by {|key, value| key}
+    times.collect do |n, v|
+      trackers << v.inject(0) {|n, timetracker| n + timetracker.time }
+      weeks << n
+    end
+    fill_in_values(weeks, trackers)
+    { weeks: weeks, trackers: trackers }
+  end
+
+  private
+
+  def fill_in_values(times, trackers)
+    (times.min..times.max).each_with_index do |time, index|
+      unless times.include?(time)
+        times.insert(index, time)
+        trackers.insert(index, 0)
+      end
     end
   end
 
