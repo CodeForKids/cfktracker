@@ -45,26 +45,39 @@ class User < ActiveRecord::Base
     times = timetrackers.group_by(&period).sort_by {|key, value| key}
     times.collect do |n, v|
       trackers << v.inject(0) {|n, timetracker| n + timetracker.time }
-      time_periods << format_time(n)
+      time_periods << n
     end
-    fill_in_values(time_periods, trackers) if time_periods.size > 0
+    fill_in_values(time_periods, trackers, period) if time_periods.size > 0
     { time_periods: time_periods, trackers: trackers }
   end
 
   private
 
-  def fill_in_values(times, trackers)
-    (times.min..times.max).each_with_index do |time, index|
-      unless times.include?(time)
-        times.insert(index, time)
+  def fill_in_values(times, trackers, period)
+    min = times.min.to_i
+    max = max_for_period(period)
+
+    (min..max).each_with_index do |time, index|
+      unless times.include?(time.to_s)
+        times.insert(index, format_time(time.to_s))
         trackers.insert(index, 0)
+      else
+        times[index] = format_time(time.to_s)
       end
+    end
+  end
+
+  def max_for_period(period)
+    if period == :week
+      Date.today.strftime("%U").to_i
+    else
+      Date.today.strftime("%y%m").to_i
     end
   end
 
   def format_time(number)
     number = Date::MONTHNAMES[number[2, number.length].to_i] if number.to_i > 52
-    number
+    number.to_s
   end
 
 end

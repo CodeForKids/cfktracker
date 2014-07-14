@@ -1,6 +1,6 @@
 $(document).on "ready page:load", ->
   $(".graph").each ->
-    m = [ 80, 80, 80, 80 ]
+    m = [ 80, 80, 80, 80 ] # margin
     w = 1000 - m[1] - m[3] # width
     h = 400 - m[0] - m[2] # height
 
@@ -16,6 +16,7 @@ $(document).on "ready page:load", ->
     ).y((d) ->
       y d
     )
+
 
     graph = d3.select(id).append("svg:svg").attr("width", w + m[1] + m[3]).attr("height", h + m[0] + m[2]).append("svg:g").attr("transform", "translate(" + m[3] + "," + m[0] + ")")
     xAxis = d3.svg.axis().scale(x).tickSize(-h).tickSubdivide(true)
