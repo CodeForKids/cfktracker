@@ -1,26 +1,26 @@
 one:
-  date: '<%= Date.new(2014, 7, 29) %>'
+  date: '<%= Date.new(Date.today.strftime("%Y").to_i, Date.today.strftime("%m").to_i - 1, 29) %>'
   time: 3
   user: julian
   received: false
   description: test
 
 two:
-  date: '<%= Date.new(2014, 8, 29) %>'
+  date: '<%= Date.new(Date.today.strftime("%Y").to_i, Date.today.strftime("%m").to_i - 1, 28) %>'
   time: 3
   user: lucas
   received: false
   description: test
 
 three:
-  date: '<%= Date.new(2014, 8, 29) %>'
+  date: '<%= Date.new(Date.today.strftime("%Y").to_i, Date.today.strftime("%m").to_i - 2, 29) %>'
   time: 3
   user: julian
   received: true
   description: test
 
 four:
-  date: '<%= Date.new(2014, 7, 30) %>'
+  date: '<%= Date.new( Date.today.strftime("%Y").to_i, Date.today.strftime("%m").to_i - 2, 30) %>'
   time: 3
   user: julian
   received: false
