@@ -8,7 +8,7 @@ $(document).on "ready page:load", ->
   json_data = element.data('data')
   data = json_data["trackers"]
 
-  x = d3.scale.ordinal().domain(json_data["weeks"]).rangePoints([0, w]);
+  x = d3.scale.ordinal().domain(json_data["time_periods"]).rangePoints([0, w]);
   y = d3.scale.linear().domain([0, element.data('max')]).range([h, 0])
 
   line = d3.svg.line().x((d, i) ->
@@ -25,9 +25,3 @@ $(document).on "ready page:load", ->
   yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left")
   graph.append("svg:g").attr("class", "y axis").attr("transform", "translate(-25,0)").call yAxisLeft
   graph.append("svg:path").attr "d", line(data)
-
-  d3.svg.append("text")
-        .attr("x", 265 )
-        .attr("y", 240 )
-        .style("text-anchor", "middle")
-        .text("Date");

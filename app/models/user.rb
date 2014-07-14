@@ -41,14 +41,14 @@ class User < ActiveRecord::Base
 
   def trackers_by_period(period)
     trackers = []
-    weeks = []
+    time_periods = []
     times = timetrackers.group_by(&period).sort_by {|key, value| key}
     times.collect do |n, v|
       trackers << v.inject(0) {|n, timetracker| n + timetracker.time }
-      weeks << n
+      time_periods << n
     end
-    fill_in_values(weeks, trackers)
-    { weeks: weeks, trackers: trackers }
+    fill_in_values(time_periods, trackers) if time_periods.size > 0
+    { time_periods: time_periods, trackers: trackers }
   end
 
   private
