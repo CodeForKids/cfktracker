@@ -25,3 +25,9 @@ $(document).on "ready page:load", ->
   yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left")
   graph.append("svg:g").attr("class", "y axis").attr("transform", "translate(-25,0)").call yAxisLeft
   graph.append("svg:path").attr "d", line(data)
+
+  d3.svg.append("text")
+        .attr("x", 265 )
+        .attr("y", 240 )
+        .style("text-anchor", "middle")
+        .text("Date");

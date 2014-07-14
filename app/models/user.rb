@@ -42,9 +42,7 @@ class User < ActiveRecord::Base
   def trackers_by_period(period)
     trackers = []
     weeks = []
-    times = timetrackers.group_by(&period)
-    puts "Times #{times}"
-    times = times.sort_by {|key, value| key}
+    times = timetrackers.group_by(&period).sort_by {|key, value| key}
     times.collect do |n, v|
       trackers << v.inject(0) {|n, timetracker| n + timetracker.time }
       weeks << n
