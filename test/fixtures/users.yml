@@ -9,3 +9,9 @@ lucas:
   uid: "1234567890"
   name: Lucas Marcelli
   email: lucas@code-for-kids.com
+
+other:
+  provider: googleauth_2
+  uid: "1234567890"
+  name: John Smith
+  email: other@code-for-kids.com

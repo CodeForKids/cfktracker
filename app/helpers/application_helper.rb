@@ -10,4 +10,8 @@ module ApplicationHelper
     grav_url
   end
 
+  def can_delete_user?
+    @current_user.email == "julian@code-for-kids.com" || @current_user.email == "lucas@code-for-kids.com"
+  end
+
 end

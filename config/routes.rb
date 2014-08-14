@@ -13,4 +13,8 @@ Rails.application.routes.draw do
     put '/toggle', to: :toggle, as: :toggle
   end
 
+  controller :users do
+    delete '/user/:id', to: :destroy, as: :destroy_user
+  end
+
 end

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :timetrackers
+  has_many :timetrackers, dependent: :destroy
 
   def self.create_with_omniauth(auth)
     create! do |user|
