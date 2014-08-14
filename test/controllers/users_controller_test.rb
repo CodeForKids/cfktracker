@@ -14,7 +14,7 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     assert_response :redirect
-    assert_equal flash[:notice], "John Smith and timetrackers successfully removed"
+    assert_equal flash[:notice], "John Smith successfully removed"
   end
 
   test "should_not_delete" do
