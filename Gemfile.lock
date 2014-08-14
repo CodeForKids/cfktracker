@@ -27,6 +27,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    airbrake (3.1.16)
+      builder
+      multi_json
     arel (5.0.1.20140414130214)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
@@ -150,6 +153,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake
   bootstrap-sass (~> 3.1.1)
   codeclimate-test-reporter
   coffee-rails (~> 4.0.0)
