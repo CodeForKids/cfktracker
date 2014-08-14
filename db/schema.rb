@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140520200624) do
+ActiveRecord::Schema.define(version: 20140814043112) do
 
   create_table "timetrackers", force: true do |t|
     t.date     "date"
@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 20140520200624) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
+
+  add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
 
 end
