@@ -7,8 +7,10 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should_delete" do
-    assert_difference('User.count',-1) do
-      delete :destroy, id: @other
+    assert_no_difference('User.all.unscoped.size') do
+      assert_difference('User.count',-1) do
+        delete :destroy, id: @other
+      end
     end
 
     assert_response :redirect
