@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
-      redirect_to timetrackers_path, :notice => "#{@user.name} and timetrackers successfully removed"
+      redirect_to timetrackers_path, :notice => "#{@user.name} successfully removed"
     else
       flash[:error] = "Could not remove #{@user.name}: #{@user.errors}"
       redirect_to user_times_path(@user)
