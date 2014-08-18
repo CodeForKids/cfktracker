@@ -12,6 +12,7 @@ gem 'turbolinks'
 gem "omniauth-google-oauth2"
 gem "paranoia", "~> 2.0"
 gem "airbrake"
+gem "lograge"
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
