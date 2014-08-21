@@ -22,8 +22,6 @@ html, body {
   background: #fff image-url("background.png") center center;
 }
 
-.user-list-panel * { text-align: center; }
-
 .login-screen {
   background: #000100 image-url("background.png") center center;
   color: #fff;
@@ -64,17 +62,19 @@ html, body {
  }
 
  div.user {
-  width:50%;
-  float:left;
-  img {
-    margin-right: 20px;
-    border-radius: 45px;
+  .image {
+    text-align:center;
+    img {
+      margin-right: 20px;
+      border-radius: 45px;
+      margin-top: 10px;
+    }
   }
- }
-
- div.info {
-  width:50%;
-  float:left;
+  .name {
+    h2 {
+      line-height: 60px;
+    }
+  }
  }
 
 .page-panel > .panel-header { padding: 20px; }

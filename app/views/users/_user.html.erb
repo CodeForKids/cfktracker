@@ -6,18 +6,25 @@
 
 <%= link_to url,"data-toggle" => "tooltip", "data-placement" => "auto", "title" => "View #{ user.name}'s times", class: 'addtooltip' do %>
   <li class="list-group-item big-list-item clearfix">
-      <div class="user">
-        <h2>
-          <%= image_tag gravatar(user.email) %> <%= user.name %> &nbsp;
-        </h2>
+    <div class="col-md-12 user">
+      <div class="col-md-1 image">
+        <%= image_tag gravatar(user.email) %>
       </div>
-      <div class="info">
+      <div class="col-md-4 name">
+        <h2><%= user.name %></h2>
+      </div>
+      <div class="col-md-4">
         <h3>
-        <small>Total Received Hours: <%= user.total_received_hours %> hours</small><br>
-        <small>Total Unreceived Hours: <%= user.total_unreceived_hours %> hours</small><br>
-        <small>Weekly Average: <%= user.weekly_average %> hours</small><br>
-        <small>Monthly Average: <%= user.monthly_average %> hours</small>
+          <small>Total Received Hours: <%= user.total_received_hours %> hours</small><br>
+          <small>Total Unreceived Hours: <%= user.total_unreceived_hours %> hours</small><br>
         </h3>
       </div>
+      <div class="col-md-3">
+        <h3>
+          <small>Weekly Average: <%= user.weekly_average %> hours</small><br>
+          <small>Monthly Average: <%= user.monthly_average %> hours</small>
+        </h3>
+      </div>
+    </div>
   </li>
 <% end %>
