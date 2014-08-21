@@ -1,7 +1,7 @@
 <% unless current_user %>
   <%= render 'layouts/login' %>
 <% else %>
-  <div class="panel panel-default page-panel">
+  <div class="panel panel-default page-panel user-list-panel">
     <div class="panel-header"><h2>People using this app</h2></div>
     <ul class="list-group">
       <%= render @users %>

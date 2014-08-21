@@ -11,12 +11,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body <% unless current_user %>class="login-screen"<% end %>>
+
   <% if current_user %>
     <%= render 'partials/header' %>
-  <% end %>
-  <div class="container">
+    <div class="container">
+      <%= yield %>
+    </div>
+  <% else %>
     <%= yield %>
-  </div>
+  <% end %>
 
   <% unless flash.empty? %>
     <div id="toast" class="top-middle"></div>
