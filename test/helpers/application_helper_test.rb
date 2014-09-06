@@ -10,7 +10,7 @@ class ApplicationHelperTest < ActionView::TestCase
   end
 
   test 'gravatar' do
-    assert_equal 'http://www.gravatar.com/avatar.php?default=&gravatar_id=71bc6f2bb5a0eac6060b0427358b7fed&rating=&size=', gravatar(@user.email)
+    assert_equal 'https://www.gravatar.com/avatar.php?default=&gravatar_id=71bc6f2bb5a0eac6060b0427358b7fed&rating=&size=', gravatar(@user.email)
   end
 
 end
