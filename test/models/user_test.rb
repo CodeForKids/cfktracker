@@ -14,7 +14,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'weekly_average' do
-    assert_equal 1, @julian.weekly_average
+    assert @julian.weekly_average > 0.8 && @julian.weekly_average < 1.6
   end
 
   test 'monthly_average' do
