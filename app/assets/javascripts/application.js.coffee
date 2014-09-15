@@ -4,6 +4,7 @@
 //= require bootstrap
 //= require toast
 //= require confirmation
+//= require d3.min
 //= require_tree .
 
 $(document).on "ready page:change", ->
