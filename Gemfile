@@ -18,9 +18,6 @@ gem "lograge"
 gem 'spring',        group: :development
 gem "codeclimate-test-reporter", group: :test, require: nil
 
-gem "unicorn"
-gem "unicorn-rails"
-
 group :production do
   gem 'remote_syslog_logger'
 end
