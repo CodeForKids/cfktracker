@@ -20,4 +20,5 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 
 group :production do
   gem 'remote_syslog_logger'
+  gem 'rails_12factor'
 end
