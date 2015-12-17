@@ -1,24 +1,19 @@
 development:
-  adapter: mysql2
-  encoding: utf8
-  database: cfktracker
-  username: root
-  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  database: website_dev
   pool: 5
 
 test:
-  adapter: mysql2
-  encoding: utf8
-  database: cfktracker_test
-  username: root
-  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  database: website_test
   pool: 5
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  database: <%= ENV["MYSQL_DATABASE"] %>
-  username: <%= ENV["MYSQL_USERNAME"] %>
-  password: <%= ENV["MYSQL_PASSWORD"] %>
-  host: <%= ENV["MYSQL_ADDRESS"] %>
-  pool: 10
+  adapter: postgresql
+  encoding: unicode
+  database: <%= Rails.application.secrets.pg_db_name %>
+  pool: 25
+  username: <%= Rails.application.secrets.pg_user %>
+  password: <%= Rails.application.secrets.pg_pass %>
